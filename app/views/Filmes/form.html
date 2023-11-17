@@ -1,0 +1,55 @@
+#{extends 'main.html' /}
+
+#{if f}
+	#{set title:'Edição de Filme' /}
+#{/if}
+#{else}
+	#{set title:'aplicação de filme em acervo' /}
+#{/else}
+
+<h1>#{get 'title' /}</h1>
+<br>
+
+<form action="@{Filmes.salvar}" method="POST">
+
+	<input type="hidden" name="filme.id" value="${f?.id}" />
+	
+	<div class="mb-3">
+		<label class="form-label">Titulo:</label>
+		<input class="form-control" type="text" name="filme.titulo" value="${f?.titulo}" />
+	</div>
+	
+	<div class="mb-3">
+		<label class="form-label">Diretor</label>
+		<input class="form-control" type="text" name="filme.diretor" value="${f?.diretor}" />
+	</div>
+	
+	<div class="mb-3">
+		<label class="form-label">Classificação</label>
+		<input class="form-control" type="text" name="filme.classificacao" value="${f?.classificacao}" />
+	</div>
+	
+	<div class="mb-3">
+		<label class="form-label">Sinopse:</label>
+		 <textarea  class="form-control" type="text" name="filme.sinopse" value="${f?.sinopse}" rows="10" cols="10"></textarea>
+	</div>
+	
+	<div class="mb-3">
+		<label class="form-label">Categoria:</label>
+		<select name="filme.categoria.id" id="disabledSelect" class="form-select">
+        <option></option>     
+        #{list items:categorias, as:'c'}
+        <option value="${c.id}"> ${c.titulo}</option>
+        
+        #{/list}
+      </select>
+	</div>
+	
+	
+	#{if f}
+		<input class="btn btn-danger" type="submit" value="Atualizar" />
+	#{/if}
+	#{else}
+		<input class="btn btn-danger" type="submit" value="Cadastrar" />
+	#{/else}
+</form>

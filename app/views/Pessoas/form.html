@@ -1,0 +1,66 @@
+#{extends 'main.html' /}
+
+#{if p}
+	#{set title:'Edição de pessoa' /}
+#{/if}
+#{else}
+	#{set title:'Cadastro de pessoa' /}
+#{/else}
+
+<h1>#{get 'title' /}</h1>
+<br>
+
+<form action="@{Pessoas.salvar}" method="POST" class="row g-3">
+
+	<input type="hidden" name="pessoa.id" value="${p?.id}" />
+	
+	<div class="mb-3">
+		<label  for="inputText4" class="form-label">Nome:</label>
+		<input class="form-control" type="text" id="inputText4" name="pessoa.nome" value="${p?.nome}" />
+	</div>
+	
+	<div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4"  name="pessoa.email" value="${p?.email}">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Senha</label>
+    <input type="password" class="form-control" id="inputPassword4" name="pessoa.senha">
+  </div>
+  
+  <div class="col-md-6">
+    <label  class="form-label">Perfil</label>
+    <select name="pessoaLog.perfil">
+    <option value="usu"	#{if pessoaLog?.perfil == "usu"} selected #{/if}>Usuario </option>
+    <option value="admin"	#{if pessoaLog?.perfil == "admin"} selected #{/if}>Administrador </option>
+    </select>
+
+  </div>
+
+	#{if p?.id}
+	
+	  <div class="mb-3">
+	 
+  <!--    <label for="disabledSelect" class="form-label">Filme</label>
+      <select   name="pessoa.pessoas.id" id="disabledSelect" class="form-select">
+		  
+       <option></option>
+       
+        #{list items:filmes, as:'fi'}
+        <option value="${fi.id}"> ${fi.titulo}</option>
+        
+        #{/list}
+         </select>
+    </div> --> 
+
+	
+	#{/if}
+	
+	#{if p}
+		<input class="btn btn-danger" type="submit" value="Atualizar" />
+	#{/if}
+	#{else}
+	<input class="btn btn-danger" type="submit" value="Cadastrar" />
+		
+	#{/else}
+</form>

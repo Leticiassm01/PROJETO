@@ -1,0 +1,54 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de pessoas' /}
+
+<h1>#{get 'title' /}</h1>
+
+<br>
+
+<form action="@{Pessoas.listar}" method="GET">
+	<div class="row">
+		<div class="col-9">
+			<input class="form-control  border-danger-subtle" type="text"
+				name="termo" value="${termo}" placeholder="Informe o termo de busca" />
+		</div>
+		<div class="col-3">
+			<input type="submit" class="btn btn-danger mb-3" value="Buscar" />
+		</div>
+	</div>
+</form>
+
+<a href="@{Pessoas.form}" class="btn btn-primary">Cadastrar</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Filmes favoritadoss</th>
+      <th>  Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  	#{list items:pessoas, as:'p'}
+	    <tr>
+	      <th>${p.id}</th>
+	      <td>${p.nome}</td>
+	      <td>${p.email}</td>
+	      <td>
+	      
+	       
+	     
+	      <td>
+	      	<a class="btn btn-danger" href="@{Pessoas.editar(p.id)}">Editar</a>
+	      	<a class="btn btn-danger" href="@{Pessoas.remover(p.id)}">Remover</a>
+	      </td>
+	    </tr>
+	#{/list}
+  </tbody>
+</table>
+
+
+
+
+

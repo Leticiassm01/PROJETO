@@ -1,0 +1,63 @@
+#{extends 'main.html' /}
+#{set title:'Listagem filmes no acervo' /}
+
+<h1>#{get 'title' /}</h1>
+<br>
+
+<form action="@{Filmes.listar}" method="GET">
+	<div class="row">
+		<div class="col-9">
+			<input class="form-control  border-danger-subtle" type="text"
+				name="termo" value="${termo}" placeholder="Informe o termo de busca" />
+		</div>
+		<div class="col-3">
+			<input type="submit" class="btn btn-danger mb-3" value="Buscar" />
+		</div>
+	</div>
+</form>
+
+<a href="@{Filmes.form}" class="btn btn- mb-3  border-danger-subtle">Inserir Filme</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Titulo</th>
+      <th>Diretor</th>
+      <th>Classificação</th>
+      <th> Sinopse</th>
+      <th> Categoria</th>
+      <th> opções</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  
+  	#{list items:filmes, as:'f'}
+  	
+	    <tr>
+	      <th>${f.id}</th>
+	      <td>${f.titulo}</td>
+	      <td>${f.diretor}</td>
+	      <td>${f.classificacao}</td>
+	      <td>${f.sinopse}</td>
+	       <td>${f.categoria?.titulo}</td>
+	     
+	      <td>  
+	        <a class="btn btn-danger" href="@{Filmes.editar(f.id)}">Editar</a>
+	      	<a class="btn btn-danger" href="@{Filmes.remover(f.id)}">Remover</a>
+	      	<a class="btn btn-danger" href="@{Pessoas.favoritar(f.id)}">Favoritar</a>
+	      	
+	      </td>
+	    
+	#{/list}
+
+	
+	</tr>
+  </tbody>
+</table>
+
+
+
+
+
