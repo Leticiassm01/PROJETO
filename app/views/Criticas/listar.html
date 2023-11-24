@@ -1,0 +1,49 @@
+#{extends 'main.html' /}
+#{set title:'Listagem filmes no acervo' /}
+
+<h1>#{get 'title' /}</h1>
+<br>
+
+<form action="@{Criticas.listar}" method="GET">
+	<div class="row">
+		<div class="col-9">
+			<input class="form-control  border-danger-subtle" type="text"
+				name="termo" value="${termo}" placeholder="Informe o termo de busca" />
+		</div>
+		<div class="col-3">
+			<input type="submit" class="btn btn-danger mb-3" value="Buscar" />
+		</div>
+	</div>
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Criticas</th>
+     
+      
+    </tr>
+  </thead>
+  <tbody>
+  
+  	#{list items:criticas, as:'c'}
+  	
+	    <tr>
+	      <th>${c.critica}</th>
+	      
+	      <td>  
+	        <a class="btn btn-danger" href="@{Critica.critica(c.id)}">Criticas</a>
+	      </td>
+	    
+	#{/list}
+
+	
+	</tr>
+  </tbody>
+</table>
+
+
+
+
+

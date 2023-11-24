@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
 
@@ -19,11 +20,12 @@ public class Filme extends Model {
 	@ManyToMany(mappedBy="filmes")
 	public List<Pessoa> pessoas;	
 	
-	
+
 	public String titulo;
 	public String diretor;
 	public String sinopse;
 	public Integer classificacao;
+	
 
 	
 	@Override

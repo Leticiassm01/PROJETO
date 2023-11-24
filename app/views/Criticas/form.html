@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+
+#{if f}
+	#{set title:'Criticas' /}
+#{/if}
+#{else}
+	#{set title:'Criticas ao filme' /}
+#{/else}
+
+<h1>#{get 'title' /}</h1>
+<br>
+
+<form action="@{Criticas.salvar}" method="POST">
+
+	<input type="hidden" name="critica.filme.id" value="${f?.id}" />
+	
+
+	
+	<div class="mb-3">
+		<label class="form-label">Critica:</label>
+		 <textarea  class="form-control" type="text" name="critica.filme.id" value="${f?.id}" rows="10" cols="10"></textarea>
+	</div>
+	
+<input class="btn btn-danger" type="submit" value="criar" />
+</form>

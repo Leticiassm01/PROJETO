@@ -19,7 +19,7 @@ public class Secure extends Controller {
 	public void verificarAdm() {
 		String perfil = session.get("perfilUsu");
 		Administrador admAnot = getActionAnnotation(Administrador.class);
-		if(admAnot != null && !"administrador".equals(perfil)) {
+		if(admAnot != null && !"administrador".equalsIgnoreCase(perfil)) {
 			forbidden("Acesso só para adms");
 		}
 	
