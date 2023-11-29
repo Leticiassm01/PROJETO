@@ -13,12 +13,9 @@
 <form action="@{Criticas.salvar}" method="POST">
 
 	<input type="hidden" name="critica.filme.id" value="${f?.id}" />
-	
-
-	
-	<div class="mb-3">
+		<div class="mb-3">
 		<label class="form-label">Critica:</label>
-		 <textarea  class="form-control" type="text" name="critica.filme.id" value="${f?.id}" rows="10" cols="10"></textarea>
+		 <textarea  class="form-control" name="critica.critica" rows="10" cols="10"></textarea>
 	</div>
 	
 <input class="btn btn-danger" type="submit" value="criar" />

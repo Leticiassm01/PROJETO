@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Categoria;
+import models.Critica;
 import models.Filme;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -30,7 +31,10 @@ public class Filmes extends Controller {
 			
 			listar(null);
 			}
-		
+	public static void detalhar( Long idc) {
+		Critica critica = Critica.findById(idc);
+		render(critica);
+	}
 	
 	public static void listar(String termo) {
 		List<Filme> filmes = null;
