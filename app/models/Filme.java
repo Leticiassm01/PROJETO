@@ -15,6 +15,7 @@ import play.db.jpa.Model;
 @Entity
 public class Filme extends Model {
 	
+	@Required
 	@ManyToOne
 	@JoinColumn(name="idcategoria")
 	public Categoria categoria;

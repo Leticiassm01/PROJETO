@@ -29,6 +29,8 @@ public class Pessoa extends Model {
 	public String email;
 	
 	@Required
+	@Min(4)
+	@Max(11)
 	public String senha;
 	
 	@Required

@@ -29,7 +29,8 @@ public class Pessoas extends Controller {
 	public static void remover(Long id) {
 		Pessoa p = Pessoa.findById(id);
 			p.delete();
-			
+			flash.success("A pessoa foi removida com sucesso.");
+
 			listar(null);
 			}
 		
@@ -66,13 +67,15 @@ public class Pessoas extends Controller {
 		
 		if(validation.hasErrors()) {
 			validation.keep();
+			flash.error("Preencha os campos corretamente");
 			form();
+			
 		}
 		pessoa.nome = pessoa.nome.toUpperCase();
 		pessoa.email = pessoa.email.toLowerCase();
 		pessoa.save();
 		
-		//flash.success("A pessoa foi cadastrada com sucesso.");
+		flash.success("A pessoa foi cadastrada com sucesso.");
 
 		listar(null);
 		editar(pessoa.id);

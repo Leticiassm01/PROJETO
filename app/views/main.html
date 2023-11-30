@@ -12,7 +12,8 @@
     .container{
      background-color: white;
     }
- 	    
+ 	   
+ 
     </style>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
@@ -55,10 +56,18 @@
 
 <br>
 
+   #{if flash.success}
+				<div class="alert alert-success" role="alert">
+				  ${flash.success}
+				</div>
+			#{/if}
     
-    
-    
-    
+    #{if flash.error}
+				<div class="alert alert-danger" role="alert">
+				  ${flash.error}
+				</div>
+			#{/if}
+    	
         #{doLayout /}
         
         <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
@@ -66,5 +75,6 @@
         
        
         </div>
+        
     </body>
 </html>
