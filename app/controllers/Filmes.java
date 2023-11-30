@@ -5,6 +5,7 @@ import java.util.List;
 import models.Categoria;
 import models.Critica;
 import models.Filme;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -28,13 +29,14 @@ public class Filmes extends Controller {
 	public static void remover(Long id) {
 	  Filme f = Filme.findById(id);
 			f.delete();
-			
+			flash.success("Filme removido do acervo");
+
 			listar(null);
 			}
 	public static void detalhar( Long id) {
 		Filme filme = Filme.findById(id);
-		List<Critica> critica = Critica.findAll();
-		render(critica, filme);
+		List<Critica> criticas = Critica.find("filme.id = ?1", filme.id).fetch();
+		render(criticas, filme);
 	}
 	
 	public static void listar(String termo) {
@@ -49,11 +51,18 @@ public class Filmes extends Controller {
 	}
 	
 	
-	public static void salvar(Filme filme) {
-		
+	public static void salvar(@Valid Filme filme) {
+
+		if(validation.hasErrors()) {
+			validation.keep();
+			flash.error("Preencha os campos corretamente");
+			form();
+			
+		}
+
 		filme.save();
 		
-		flash.success("Filme inserido no acervos");
+		flash.success("Filme inserido no cartaz");
 
 		listar(null);
 	}
