@@ -12,15 +12,26 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import play.data.validation.Max;
+import play.data.validation.Min;
+import play.data.validation.MinSize;
+import play.data.validation.Required;
 import play.db.jpa.Model;
 import play.libs.Crypto;
 
 @Entity
 public class Pessoa extends Model {
-
+    
+	@Required
 	public String nome;
+	
+	@Required
 	public String email;
+	
+	@Required
 	public String senha;
+	
+	@Required
 	public String perfil;
 	
 	@ManyToMany

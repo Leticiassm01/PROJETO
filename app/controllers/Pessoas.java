@@ -5,6 +5,7 @@ import java.util.List;
 
 import models.Filme;
 import models.Pessoa;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -61,7 +62,12 @@ public class Pessoas extends Controller {
 		render(pessoa);
 	}
 	
-	public static void salvar(Pessoa pessoa, Long idfilme) {
+	public static void salvar(@Valid Pessoa pessoa, Long idfilme) {
+		
+		if(validation.hasErrors()) {
+			validation.keep();
+			form();
+		}
 		pessoa.nome = pessoa.nome.toUpperCase();
 		pessoa.email = pessoa.email.toLowerCase();
 		pessoa.save();

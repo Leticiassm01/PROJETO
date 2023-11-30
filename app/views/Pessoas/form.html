@@ -17,15 +17,19 @@
 	<div class="mb-3">
 		<label  for="inputText4" class="form-label">Nome:</label>
 		<input class="form-control" type="text" id="inputText4" name="pessoa.nome" value="${p?.nome}" />
+		#{error 'pessoa.nome' /}
 	</div>
 	
 	<div class="col-md-6">
     <label for="inputEmail4" class="form-label">Email</label>
     <input type="email" class="form-control" id="inputEmail4"  name="pessoa.email" value="${p?.email}">
+    #{error 'pessoa.email' /}
   </div>
+  
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Senha</label>
     <input type="password" class="form-control" id="inputPassword4" name="pessoa.senha">
+    #{error 'pessoa.senha' /}
   </div>
   
   <div class="col-md-6">
@@ -34,6 +38,7 @@
     <option >Usuario </option>
     <option >Administrador </option>
     </select>
+    #{error 'pessoa.perfil' /}
 
   </div>
 

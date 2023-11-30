@@ -31,9 +31,10 @@ public class Filmes extends Controller {
 			
 			listar(null);
 			}
-	public static void detalhar( Long idc) {
-		Critica critica = Critica.findById(idc);
-		render(critica);
+	public static void detalhar( Long id) {
+		Filme filme = Filme.findById(id);
+		List<Critica> critica = Critica.findAll();
+		render(critica, filme);
 	}
 	
 	public static void listar(String termo) {
