@@ -28,10 +28,12 @@ public class Criticas extends Controller {
 	@Administrador
 	public static void remover(Long id) {
 	  Critica c = Critica.findById(id);
+	  		Long idFilme = c.filme.id;
 			c.delete();
-			flash.success("Critica removido do acervo");
+			flash.success("Critica removida do acervo");
 
-			Filmes.detalhar(id);
+			Filmes.detalhar(idFilme);
+			
 			}
 
 		public static void salvar(Critica critica) {

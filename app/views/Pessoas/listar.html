@@ -36,9 +36,9 @@
 	      <td>${p.nome}</td>
 	      <td>${p.email}</td>
 	      <td>
-	      
-	     ${p.filmes.titulo}
-	     
+			#{list p.filmes, as:'f'}      
+	     		${f.titulo}
+			#{/list}     
 	      <td>
 	      	<a class="btn btn-danger" href="@{Pessoas.editar(p.id)}">Editar</a>
 	      	<a class="btn btn-danger" href="@{Pessoas.remover(p.id)}">Remover</a>

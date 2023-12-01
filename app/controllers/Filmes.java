@@ -33,6 +33,7 @@ public class Filmes extends Controller {
 
 			listar(null);
 			}
+	
 	public static void detalhar( Long id) {
 		Filme filme = Filme.findById(id);
 		List<Critica> criticas = Critica.find("filme.id = ?1", filme.id).fetch();

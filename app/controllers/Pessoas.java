@@ -30,8 +30,9 @@ public class Pessoas extends Controller {
 	public static void remover(Long id) {
 		Pessoa p = Pessoa.findById(id);
 			p.delete();
-			flash.success("A pessoa foi removida com sucesso.");
-
+			
+			flash.success("A pessoa " + p.nome + " foi removida com sucesso.");
+			
 			listar(null);
 			}
 		
@@ -56,6 +57,7 @@ public class Pessoas extends Controller {
 		}
 		pessoa.filmes.add(f);
 		pessoa.save();
+		flash.success("O filme " + f.titulo + " foi favoritado com sucesso!");
 	    Filmes.listar("");
 	}
 	
