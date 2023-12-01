@@ -10,9 +10,7 @@ public class Secure extends Controller {
     	if (session.get("Pessoalogada") == null) {
     		Logins.form();
     	}
-    //	if(session.contains("Pessoalogada") == null){
-    	//	Logins.form();
-    //	}
+
     }
 
 	@Before(unless="Pessoas.form")

@@ -8,6 +8,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import play.data.validation.MaxSize;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -33,8 +34,9 @@ public class Filme extends Model {
 	 @Required
 	public String sinopse;
 	 
-	 
+	 @Required
 	 @MinSize(1)
+	 @MaxSize(2)
 	public Integer classificacao;
 	
 

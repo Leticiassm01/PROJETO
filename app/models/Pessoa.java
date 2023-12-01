@@ -13,6 +13,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 import play.data.validation.Max;
+import play.data.validation.MaxSize;
 import play.data.validation.Min;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
@@ -28,9 +29,7 @@ public class Pessoa extends Model {
 	@Required
 	public String email;
 	
-	@Required
-	@Min(4)
-	@Max(11)
+    @Required
 	public String senha;
 	
 	@Required

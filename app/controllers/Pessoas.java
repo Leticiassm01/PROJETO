@@ -26,6 +26,7 @@ public class Pessoas extends Controller {
 		renderTemplate("Pessoas/form.html", p, filmes);
 	}
 	
+	@Administrador
 	public static void remover(Long id) {
 		Pessoa p = Pessoa.findById(id);
 			p.delete();
@@ -58,25 +59,23 @@ public class Pessoas extends Controller {
 	    Filmes.listar("");
 	}
 	
-	public static void detalhar(Long id) {
-		Pessoa pessoa = Pessoa.findById(id);
-		render(pessoa);
-	}
 	
 	public static void salvar(@Valid Pessoa pessoa, Long idfilme) {
-		
+	
 		if(validation.hasErrors()) {
 			validation.keep();
 			flash.error("Preencha os campos corretamente");
 			form();
 			
 		}
+		
+		
 		pessoa.nome = pessoa.nome.toUpperCase();
 		pessoa.email = pessoa.email.toLowerCase();
+		
 		pessoa.save();
 		
 		flash.success("A pessoa foi cadastrada com sucesso.");
-
 		listar(null);
 		editar(pessoa.id);
 	}

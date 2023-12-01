@@ -44,11 +44,16 @@
 	       <td>${f.categoria?.titulo}</td>
 	     
 	      <td>  
+	      
+	      #{if session.get("perfilUsu").equals("administrador")}
 	        <a class="btn btn-danger" href="@{Filmes.editar(f.id)}">Editar</a>
 	      	<a class="btn btn-danger" href="@{Filmes.remover(f.id)}">Remover</a>
+	      	#{/if}
+	      	
+	      	
 	      	<a class="btn btn-danger" href="@{Pessoas.favoritar(f.id)}">Favoritar</a>
-	      	<a class="btn btn-danger" href="@{Criticas.form(f.id)}">Criticas</a>
-	      	<a class="btn btn-danger" href="@{Filmes.detalhar(f.id)}"> verCriticas</a>
+	      	<a class="btn btn-danger" href="@{Criticas.form(f.id)}">Criticar</a>
+	      	<a class="btn btn-danger" href="@{Filmes.detalhar(f.id)}"> ver Criticas</a>
 	      	
 	      </td>
 	    

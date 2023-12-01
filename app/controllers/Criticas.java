@@ -25,24 +25,15 @@ public class Criticas extends Controller {
 		render(criticas);
 	}
 
-	public static void detalhar( Long idc) {
-		Critica critica = Critica.findById(idc);
-		render(critica);
-	}
-		public static void remover(Long id) {
-		 Critica c = Critica.findById(id);
-				c.delete();
-				
-				Filmes.listar(null);
-				}
-		/*
-		public static void listar(Long termo) {	
-			List<Critica> criticas = null;
-				criticas = Critica.findAll();			
-			render(criticas);
-		}*/
-			
-	
+	@Administrador
+	public static void remover(Long id) {
+	  Critica c = Critica.findById(id);
+			c.delete();
+			flash.success("Critica removido do acervo");
+
+			Filmes.detalhar(id);
+			}
+
 		public static void salvar(Critica critica) {
 			
 			critica.save();

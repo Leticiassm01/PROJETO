@@ -30,14 +30,14 @@
     </tr>
   </thead>
   <tbody>
-  	#{list items:pessoas, as:'p'}
+  	#{list pessoas, as:'p'}
 	    <tr>
 	      <th>${p.id}</th>
 	      <td>${p.nome}</td>
 	      <td>${p.email}</td>
 	      <td>
 	      
-	       
+	     ${p.filmes.titulo}
 	     
 	      <td>
 	      	<a class="btn btn-danger" href="@{Pessoas.editar(p.id)}">Editar</a>
