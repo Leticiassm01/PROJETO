@@ -9,8 +9,9 @@ import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
 
-@With(Secure.class)
 
+
+@With(Secure.class)
 public class Pessoas extends Controller {
 	
 	public static void form() {
@@ -50,12 +51,16 @@ public class Pessoas extends Controller {
 	}
 	
 	public static void favoritar(Long id) {
-		Pessoa pessoa = Pessoa.find("email = ?1", "admin@admin.com").first(); 
+		
+		String email = session.get("emailLogado");
+		Pessoa pessoa = Pessoa.find("email = ?1", email).first(); 
 		Filme f = Filme.findById(id);
+		
 		if (pessoa.filmes == null) {
 			pessoa.filmes = new ArrayList<>();
 		}
 		pessoa.filmes.add(f);
+		
 		pessoa.save();
 		flash.success("O filme " + f.titulo + " foi favoritado com sucesso!");
 	    Filmes.listar("");
@@ -71,14 +76,15 @@ public class Pessoas extends Controller {
 			
 		}
 		
-		
 		pessoa.nome = pessoa.nome.toUpperCase();
 		pessoa.email = pessoa.email.toLowerCase();
 		
 		pessoa.save();
 		
 		flash.success("A pessoa foi cadastrada com sucesso.");
+		
 		listar(null);
+		
 		editar(pessoa.id);
 	}
 }

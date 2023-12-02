@@ -7,14 +7,15 @@
 	#{set title:'Cadastro de pessoa' /}
 #{/else}
 
-<h1>#{get 'title' /}</h1>
+<center><h1>#{get 'title' /}</h1></center>
 <br>
 
 <form action="@{Pessoas.salvar}" method="POST" class="row g-3">
 
 	<input type="hidden" name="pessoa.id" value="${p?.id}" />
 	
-	<div class="mb-3">
+	
+	<div class="mb-1 ">
 		<label  for="inputText4" class="form-label">Nome:</label>
 		<input class="form-control" type="text" id="inputText4" name="pessoa.nome" value="${p?.nome}" />
 		#{error 'pessoa.nome' /}
@@ -28,7 +29,7 @@
   
   <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Senha</label>
-    <input type="password" class="form-control" id="inputPassword4" name="pessoa.senha">
+    <input type="password" class="form-control" id="inputPassword4" name="pessoa.senha"  value="${p?.senhas}">
     #{error 'pessoa.senha' /}
   </div>
   
@@ -36,36 +37,22 @@
     <label  class="form-label">Perfil</label>
     <select name="pessoa.perfil">
     <option >Usuario </option>
-    <option >Administrador </option>
+    <option >administrador </option>
     </select>
     #{error 'pessoa.perfil' /}
 
   </div>
 
-	#{if p?.id}
-	
-	  <div class="mb-3">
-	 
-  <!--    <label for="disabledSelect" class="form-label">Filme</label>
-      <select   name="pessoa.pessoas.id" id="disabledSelect" class="form-select">
-		  
-       <option></option>
-       
-        #{list items:filmes, as:'fi'}
-        <option value="${fi.id}"> ${fi.titulo}</option>
-        
-        #{/list}
-         </select>
-    </div> --> 
-
-	
-	#{/if}
-	
 	#{if p}
-		<input class="btn btn-danger" type="submit" value="Atualizar" />
+	<div class="col-12">
+    <center><button type="submit" value="Atualizar" class="btn btn-danger">Editar</button></center>
+  </div>
+		
 	#{/if}
 	#{else}
-	<input class="btn btn-danger" type="submit" value="Cadastrar" />
-		
+	
+<div class="col-12">
+   <center> <button type="submit" value="Cadastrar" class="btn btn-danger">Cadastar</button></center>
+  </div>
 	#{/else}
 </form>

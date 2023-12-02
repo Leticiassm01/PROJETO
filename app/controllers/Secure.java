@@ -1,15 +1,19 @@
 package controllers;
 
+import java.util.List;
+
+import models.Categoria;
 import play.mvc.Before;
 import play.mvc.Controller;
 
 public class Secure extends Controller {
 	
-	@Before (unless={"Pessoas.form"})
+	
+	@Before (unless={"Pessoas.form", "Pessoas.salvar"})
     static void autentinficar() {
-    	if (session.get("Pessoalogada") == null) {
+    	if (session.get("Pessoalogada") == null ) {
     		Logins.form();
-    	}
+    	} 
 
     }
 
@@ -19,6 +23,8 @@ public class Secure extends Controller {
 		Administrador admAnot = getActionAnnotation(Administrador.class);
 		if(admAnot != null && !"administrador".equalsIgnoreCase(perfil)) {
 			forbidden("Acesso só para adms");
+
+			
 		}
 	
 	}

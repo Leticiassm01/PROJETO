@@ -7,11 +7,41 @@
   </div>
   <div class="card-body">
   
-    <h5 class="card-title">${filme.titulo}</h5>
+ <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Titulo</th>
+      <th>Criticas</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  	
+	    <tr>
+	      <th>${filme.titulo}</th>
+	      <td> ${filme.titulo}</td>
+	     
+	      <td>
+			   #{list criticas, as: 'c'}
+     <p class="card-text"> ${c.critica} </p>
+       #{if session.get("perfilUsu").equals("administrador")}
+     <a class="btn btn-danger" href="@{Criticas.remover(c.id)}">Remover</a>
+     #{/if}
+     #{/list}
+    </td>
+	      
+	    </tr>
+	
+  </tbody>
+</table>
+
+
+
+ <!--    <h5 class="card-title">${filme.titulo}</h5> 
  
-	#{list filmes, as:"f"}
-     <p class="card-text">${criticas.critica} <br/> </p> 
-     
-     {/list}
-     </div>
+   #{list criticas, as: 'c'}
+     <p class="card-text"> ${c.critica} </p> 
+     #{/list}
+     </div> -->
 </div>

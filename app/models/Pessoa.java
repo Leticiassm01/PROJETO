@@ -39,10 +39,6 @@ public class Pessoa extends Model {
 	@JoinTable(name="pessoa_filme")
 	public List<Filme> filmes;
 	
-	public void setSenha(String s) {
-		senha = Crypto.passwordHash(s);
-	}
-
 	@Override
 	public String toString() {
 		return nome + " " + email;

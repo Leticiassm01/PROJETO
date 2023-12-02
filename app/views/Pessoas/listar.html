@@ -41,7 +41,9 @@
 			#{/list}     
 	      <td>
 	      	<a class="btn btn-danger" href="@{Pessoas.editar(p.id)}">Editar</a>
+	      	  #{if session.get("perfilUsu").equals("administrador")}
 	      	<a class="btn btn-danger" href="@{Pessoas.remover(p.id)}">Remover</a>
+	      	#{/if}
 	      </td>
 	    </tr>
 	#{/list}

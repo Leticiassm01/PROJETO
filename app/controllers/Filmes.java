@@ -25,6 +25,7 @@ public class Filmes extends Controller {
 		List<Categoria> categorias = Categoria.findAll();
 		renderTemplate("Filmes/form.html", f, categorias);
 	}
+	
 	@Administrador
 	public static void remover(Long id) {
 	  Filme f = Filme.findById(id);
