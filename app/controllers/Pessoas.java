@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import models.Filme;
@@ -37,17 +38,20 @@ public class Pessoas extends Controller {
 			listar(null);
 			}
 		
-	
+	public static void detalhar(Long id) {
+		Pessoa p = Pessoa.findById(id);
+		render(p);
+	}
 	
 	public static void listar(String termo) {
-		List<Pessoa> pessoas = null;
+	/*	List<Pessoa> pessoas = null;
 		if (termo == null || termo.isEmpty()) {
 			pessoas = Pessoa.findAll();			
 		} else {
 			pessoas = Pessoa.find("lower(nome) like ?1 or lower(email) like ?1",
 					"%"+ termo.toLowerCase() +"%").fetch();
-		}
-		render(pessoas, termo);
+	}*/	
+		render();
 	}
 	
 	public static void favoritar(Long id) {
@@ -86,5 +90,16 @@ public class Pessoas extends Controller {
 		listar(null);
 		
 		editar(pessoa.id);
+	}
+	
+	public static void listarAjax(String termo) {
+		List<Pessoa> p = Collections.emptyList();
+		if (termo == null || termo.trim().isEmpty()) {
+			p = Pessoa.findAll();
+		} else {
+			p = Pessoa.find("nome like ?1 or email like ?1", "%"+termo+"%").fetch();
+		}
+
+		renderJSON(p);
 	}
 }

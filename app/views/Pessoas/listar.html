@@ -25,30 +25,36 @@
       <th>#</th>
       <th>Nome</th>
       <th>Email</th>
-      <th>Filmes favoritadoss</th>
       <th>  Ações</th>
     </tr>
   </thead>
-  <tbody>
-  	#{list pessoas, as:'p'}
-	    <tr>
-	      <th>${p.id}</th>
-	      <td>${p.nome}</td>
-	      <td>${p.email}</td>
-	      <td>
-			#{list p.filmes, as:'f'}      
-	     		${f.titulo}
-			#{/list}     
-	      <td>
-	      	<a class="btn btn-danger" href="@{Pessoas.editar(p.id)}">Editar</a>
-	      	  #{if session.get("perfilUsu").equals("administrador")}
-	      	<a class="btn btn-danger" href="@{Pessoas.remover(p.id)}">Remover</a>
-	      	#{/if}
-	      </td>
-	    </tr>
-	#{/list}
+  <tbody id="tabela">
+  	
   </tbody>
 </table>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("form").submit(function(e) {
+	 e.preventDefault();
+	 $.ajax({
+		 type: "GET", //INFORME O TIPO DA REQUISICAO
+		 url: "@{Pessoas.listarAjax}", //INFORME A URL DE DESTINO
+		 data: $(this).serialize(), //ENVIA DADOS DO FORMULARIO
+		 success: function(data) {
+			 $("#tabela").empty();
+			 $.each(data, function(i, p) {
+				 $("#tabela").append("<tr><td>" + p.id + "</td>" + "<td>" + p.nome + "<td>" + p.email + "</td>" +
+						 "<td>" +
+						 "<a class='btn btn-danger' href=/Pessoas/form?id=" + p.id + ">Editar</a>" +
+						 "<a  class='btn btn-danger'href=/Pessoas/remover?id="  + p.id + ">Remover</a>" +
+						 "<a  class='btn btn-danger'href=/Pessoas/detalhar?id="  + p.id + ">Detalhar</a>" + "</td> </tr>");
+			 });
+		 }
+	 });
+	});
+});
+</script>
 
 
 

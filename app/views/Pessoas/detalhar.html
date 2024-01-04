@@ -1,0 +1,19 @@
+#{extends 'main.html' /}
+#{set title:'Detalhar filmes' /}
+
+#{list pessoas, as:'p'}
+ <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Filmes favoritadoss</th>
+      
+    </tr>
+	      <tr>
+	      <th>${p.id}</th>
+	      <td>${p.nome}</td>
+	      <td>
+			#{list p.filmes, as:'f'}      
+	     		${f.titulo}
+			#{/list}     
+	    </tr>
+	#{/list}
