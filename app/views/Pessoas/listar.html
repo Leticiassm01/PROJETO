@@ -44,11 +44,11 @@ $(document).ready(function() {
 		 success: function(data) {
 			 $("#tabela").empty();
 			 $.each(data, function(i, p) {
-				 $("#tabela").append("<tr><td>" + p.id + "</td>" + "<td>" + p.nome + "<td>" + p.email + "</td>" +
+				 $("#tabela").append("<tr> <td>" + p.id + "</td>" + "<td>" + p.nome + "</td>" + "<td>" + p.email + "</td>" +
 						 "<td>" +
 						 "<a class='btn btn-danger' href=/Pessoas/form?id=" + p.id + ">Editar</a>" +
 						 "<a  class='btn btn-danger'href=/Pessoas/remover?id="  + p.id + ">Remover</a>" +
-						 "<a  class='btn btn-danger'href=/Pessoas/detalhar?id="  + p.id + ">Detalhar</a>" + "</td> </tr>");
+						 "</td> </tr>");
 			 });
 		 }
 	 });
